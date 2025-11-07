@@ -1,0 +1,137 @@
+.hamburger-menu-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+#kiss-mm-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+
+#kiss-mm-menu-overlay.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.kiss-mm-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  padding-top: 60px;
+  overflow-y: auto;
+}
+
+.kiss-mm-menu h2 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.kiss-mm-menu ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.kiss-mm-menu li {
+  margin: 8px 0;
+}
+
+.kiss-mm-menu a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 16px;
+  display: block;
+}
+
+.menu-group {
+  margin-top: 16px;
+}
+
+.menu-group-header {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 0;
+  color: #333;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-group-header::after {
+  content: '▼';
+  font-size: 12px;
+  color: #888;
+  transition: transform 0.2s;
+}
+
+.menu-group.open .menu-group-header::after {
+  transform: rotate(180deg);
+}
+
+/* 二级菜单容器：启用 flex-wrap 自动换行 */
+.menu-group-items {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  display: flex;
+  flex-wrap: wrap; /* 👈 自动换行 */
+  gap: 8px; /* 按钮间距 */
+  padding: 0 4px; /* 微调内边距 */
+}
+
+/* 手风琴展开时显示 */
+.menu-group.open .menu-group-items {
+  max-height: 300px; /* 足够容纳多行 */
+}
+
+/* 每个按钮样式 */
+.menu-item-btn {
+  background: #f5f7fa;
+  border: 1px solid #dde2eb;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #4a5568;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap; /* 防止文字换行 */
+  transition: all 0.15s ease;
+  flex: 0 1 auto; /* 不伸展，按内容宽度 */
+  min-width: 60px; /* 最小宽度防太窄 */
+  text-align: center;
+}
+
+.menu-item-btn:hover {
+  background: #e6f0ff;
+  border-color: #a0c1ff;
+  color: #0066cc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
